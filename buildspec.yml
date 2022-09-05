@@ -6,6 +6,7 @@ phases:
     runtime-versions:
       nodejs: 16  
     commands:
+      - rm -rf node_modules/ 
       - echo Installing Mocha...
       - npm install -g mocha
   pre_build:
@@ -15,16 +16,13 @@ phases:
       - npm install unit.js
   build:
     commands:
+      - npm run build --if-present
       - echo Build started on `date`
       - echo Compiling the Node.js code
       - mocha test.js
   post_build:
     commands:
       - echo Build completed on `date`
-# Include only the files required for your application to run.
-# Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
-# used only for building and testing.
-# ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
 artifacts:
   files:
     - app.js
