@@ -6,7 +6,7 @@ phases:
     runtime-versions:
       nodejs: 16  
     commands:
-      - echo Clean Code...
+      - echo Clean Code..
       - rm -rf node_modules/ 
       - echo Installing Mocha...
       - npm install -g mocha
